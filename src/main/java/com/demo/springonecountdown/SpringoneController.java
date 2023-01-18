@@ -13,7 +13,7 @@ public class SpringoneController {
 
   ZoneId zoneId = ZoneId.of ( "America/NewYork" );
   ZonedDateTime now = ZonedDateTime.now ( zoneId );
-  ZonedDateTime springOneStartDate = ZonedDateTime.parse("01/24/2023");
+  ZonedDateTime springOneStartDate = now.plusDays(10);
   Duration duration = Duration.between ( now , springOneStartDate );
   long countdown = duration.toHours();
 
