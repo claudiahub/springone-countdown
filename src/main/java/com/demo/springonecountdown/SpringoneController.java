@@ -1,5 +1,7 @@
 package com.demo.springonecountdown;
 
+import java.util.Timer;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -7,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class SpringoneController {
 
+  Timer timer = new Timer();
+
 @RequestMapping("/")
 
   public String index() {
-    CountDown countdown = new CountDown();
-    return "Spring One is happening in "+countdown+"!";
+    return "SpringOne happens in "+timer+"!";
   }
 
 }
