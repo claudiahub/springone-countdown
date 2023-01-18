@@ -19,11 +19,10 @@ public class CountDown {
 
     public void run() {
       if (duration > 0) {
-        System.out.println(duration + " seconds");
         duration--;
+        duration + " seconds"
       }else{
-        System.out.println("now");
-        System.exit(0);
+        return "now";
       }
     }
   }

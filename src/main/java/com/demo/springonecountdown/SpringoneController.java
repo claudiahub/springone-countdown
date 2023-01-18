@@ -10,7 +10,8 @@ public class SpringoneController {
 @RequestMapping("/")
 
   public String index() {
-    return "Spring One is happening in "+new CountDown()+"!";
+    CountDown countdown = new CountDown();
+    return "Spring One is happening in "+countdown+"!";
   }
 
 }
