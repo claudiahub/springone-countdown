@@ -14,8 +14,8 @@ public class SpringoneController {
 
   ZoneId zoneId = ZoneId.of( "America/Chicago" );
   ZonedDateTime now = ZonedDateTime.now( zoneId );
-  final static DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a");
-  ZonedDateTime springOneStartDate = ZonedDateTime.parse("2023-01-24 17:00:00 pm", formatter);
+  final static DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a z");
+  ZonedDateTime springOneStartDate = ZonedDateTime.parse("2023-01-24 17:00:00 pm +01:00", formatter);
   Duration duration = Duration.between( now , springOneStartDate );
   long countdown = duration.toHours();
 
