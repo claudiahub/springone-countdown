@@ -1,6 +1,8 @@
 package com.demo.springonecountdown;
 
-import java.util.Timer;
+import java.time.Duration;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class SpringoneController {
 
-  Timer timer = new Timer();
+  ZoneId zoneId = ZoneId.of ( "America/NewYork" );
+  ZonedDateTime now = ZonedDateTime.now ( zoneId );
+  ZonedDateTime springOneStartDate = ZonedDateTime.parse("01/24/2023");
+  Duration duration = Duration.between ( now , springOneStartDate );
+  long countdown = duration.toHours();
 
 @RequestMapping("/")
 
   public String index() {
-    return "SpringOne happens in "+timer+"!";
+    return "SpringOne happens in "+countdown+"!";
   }
 
 }
