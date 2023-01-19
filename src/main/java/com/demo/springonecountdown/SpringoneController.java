@@ -22,7 +22,7 @@ public class SpringoneController {
   @RequestMapping("/")
 
   public String index() {
-    return "SpringOne happens in "+countdown+" hours !";
+    return "SpringOne happens in hours !";
   }
 
 }
