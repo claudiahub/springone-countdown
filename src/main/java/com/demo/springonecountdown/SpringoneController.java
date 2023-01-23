@@ -14,15 +14,15 @@ public class SpringoneController {
 
   ZoneId zoneId = ZoneId.of( "America/Chicago" );
   ZonedDateTime now = ZonedDateTime.now( zoneId );
-  DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss a z");
-  ZonedDateTime springOneStartDate = ZonedDateTime.parse("2023-01-24 17:00:00 pm +01:00", formatter);
+  DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+  ZonedDateTime springOneStartDate = ZonedDateTime.parse("2023-01-24 17:00:00 +01:00", formatter);
   Duration duration = Duration.between( now , springOneStartDate );
   long countdown = duration.toHours();
 
   @RequestMapping("/")
 
   public String index() {
-    return "SpringOne happens in hours";
+    return "SpringOne happens in+"+Math.floor(countdown)+" hours";
   }
 
 }
