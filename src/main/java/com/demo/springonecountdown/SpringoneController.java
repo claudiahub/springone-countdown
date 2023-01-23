@@ -17,12 +17,12 @@ public class SpringoneController {
   DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
   ZonedDateTime springOneStartDate = ZonedDateTime.parse("2023-01-24 17:00:00 +01:00", formatter);
   Duration duration = Duration.between( now , springOneStartDate );
-  long countdown = duration.toHours();
+  int countdown = (int) Math.floor(duration.toHours());
 
   @RequestMapping("/")
 
   public String index() {
-    return "SpringOne happens in+"+Math.floor(countdown)+" hours";
+    return "SpringOne happens in "+countdown+" hours!";
   }
 
 }
