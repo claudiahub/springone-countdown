@@ -5,8 +5,8 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 
@@ -19,7 +19,7 @@ public class SpringoneController {
   Duration duration = Duration.between( now , springOneStartDate );
   int countdown = (int) Math.floor(duration.toHours());
 
-  @RequestMapping("/")
+  @GetMapping("/*")
 
   public String index() {
     return "SpringOne happens in "+countdown+" hours!";

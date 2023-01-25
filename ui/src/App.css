@@ -1,0 +1,77 @@
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* required font */
+@font-face {
+  font-family: 'DS-DIGI';
+  src: url('DS-DIGI.TTF');
+}
+/* override variables here  */
+:root {
+  --clockSize: 30rem;
+  --bgColor: #111;
+  --mainColor: #37f;
+  --loadingSize: 0;
+  --dashArray: 876;
+}
+body {
+  background: var(--bgColor);
+  font-family: 'DS-DIGI', sans-serif;
+}
+/* clock styles here  */
+.box {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  margin-top: 10rem;
+}
+.clock-container {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  width: var(--clockSize);
+  height: var(--clockSize);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.clock-shape {
+  fill: transparent;
+  stroke-width: calc(var(--clockSize) * 0.05);
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-dasharray: var(--dashArray);
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  transition: 1s;
+}
+.main-circle {
+  stroke: var(--mainColor);
+  stroke-dashoffset: calc(var(--dashArray) - (var(--dashArray) * (var(--loadingSize) / 60)));
+}
+.content {
+  color: var(--mainColor);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5.5rem;
+}
+.sec {
+  animation: secAnimation 1s infinite;
+}
+@keyframes secAnimation {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
