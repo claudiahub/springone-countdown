@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { CounterType, TimeDisplayValuesType } from './types';
-import { AppStyled, CounterStyled, ContainerStyled, WrapperStyled, DateStyled, ImageStyled } from './styles';
+import { AppStyled, CounterStyled, ContainerStyled, WrapperStyled, DateStyled } from './styles';
 import React from 'react';
 
 const App = () => {
@@ -29,20 +29,23 @@ const App = () => {
   );
 
   useEffect(() => {
-    setInterval(() => setTimeDisplay(generateTimeDisplay), 1600);
+    setInterval(() => setTimeDisplay(generateTimeDisplay), 1800);
   }, [generateTimeDisplay]);
 
   useEffect(() => {
     axios.get(basePath+'/welcome')
     .then(function (response) {
-      if (response.data && response.data.length) {
-      console.log('response :>> ', response);
-      const { date, title } = response.data[0];
-      setPageTitle(title);
-      setTargetDate(date);
-      console.log('date :>> ', date);
-      console.log('date :>> ', typeof date);
-      setNextYear(new Date(date).getFullYear());
+      console.log('response 1 :>> ', response);
+      if (response.data && typeof response.data.date) {
+        console.log('response 2 :>> ', response);
+        console.log('response :>> ', response);
+        const { date, title } = response.data;
+        console.log('title :>> ', title);
+        setPageTitle(title);
+        setTargetDate(date);
+        console.log('date :>> ', date);
+        console.log('date :>> ', typeof date);
+        setNextYear(new Date(date).getFullYear());
       }
     })
     .catch(function (error) {
@@ -58,14 +61,13 @@ const App = () => {
   );
 
   const SpringAltText = "Spring logo";
-  const SpringAnimated = <img src="/spring.png" alt={SpringAltText} height={30} width={30}/>;
+  const SpringAnimated = <img src="/spring.png" alt={SpringAltText}/>;
 
-  return (
-    <div className="App">
+  return (<div className="App">
       <AppStyled>
           <ContainerStyled>
             <DateStyled>
-              <div><>{SpringAnimated} {pageTitle} {SpringAnimated}</></div>
+              <div><h1>{SpringAnimated}{pageTitle}{SpringAnimated}</h1></div>
             </DateStyled>
             <WrapperStyled>
               <Counter displayValue={timeDisplay.days} label={"Days"} />

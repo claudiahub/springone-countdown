@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
-public class SpringoneController {
+public class ConfCountDownController {
 
   ZoneId zoneId = ZoneId.of( "America/Chicago" );
   ZonedDateTime now = ZonedDateTime.now( zoneId );
