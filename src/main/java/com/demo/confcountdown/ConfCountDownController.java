@@ -1,4 +1,4 @@
-package com.demo.springonecountdown;
+package com.demo.confcountdown;
 
 import java.time.Duration;
 import java.time.ZoneId;
