@@ -15,14 +15,14 @@ public class ConfCountDownController {
   ZoneId zoneId = ZoneId.of( "America/Chicago" );
   ZonedDateTime now = ZonedDateTime.now( zoneId );
   DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
-  ZonedDateTime springOneStartDate = ZonedDateTime.parse("2023-01-25 17:00:00 +01:00", formatter);
-  Duration duration = Duration.between( now , springOneStartDate );
+  ZonedDateTime startDate = ZonedDateTime.parse("2023-01-25 17:00:00 +01:00", formatter);
+  Duration duration = Duration.between( now , startDate );
   int countdown = (int) Math.floor(duration.toHours());
 
   @GetMapping("/*")
 
   public String index() {
-    return "SpringOne happens in "+countdown+" hours!";
+    return "Conference will happen in "+countdown+" hours!";
   }
 
 }
