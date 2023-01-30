@@ -17,12 +17,13 @@ public class ConfCountDownController {
   DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
   ZonedDateTime startDate = ZonedDateTime.parse("2023-05-18 17:00:00 +01:00", formatter);
   Duration duration = Duration.between( now , startDate );
-  int countdown = (int) Math.floor(duration.toHours());
+  int countdown = (int) Math.floor(duration.toDays());
 
   @GetMapping("/*")
 
   public String index() {
-    return "Conference will happen in "+countdown+" hours!";
+    String conferenceName = System.getenv("conferenceName");
+    return conferenceName+" will happen in "+countdown+" days!";
   }
 
 }
