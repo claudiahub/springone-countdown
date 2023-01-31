@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.utils.SystemUtil;
+
 @RestController
 @SpringBootApplication
 @CrossOrigin("*")
@@ -20,16 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConfCountDown extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
+		SystemUtil.setEnv("conferenceName", "Spring IO");
+		SystemUtil.setEnv("location", "Barcelona");
 		SpringApplication.run(ConfCountDown.class, args);
 	}
 
 	public static String getCountDown() {
-		// ZoneId zoneId = ZoneId.of( "Europe/Barcelona" );
-		// ZonedDateTime now = ZonedDateTime.now( zoneId );
 		DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
 		ZonedDateTime startDate = ZonedDateTime.parse("2023-05-18 9:00:00 +01:00", formatter);
-		// Duration duration = Duration.between( now , startDate );
-		// int countdown = (int) Math.floor(duration.toHours());
 		return startDate.toString();
 	}
 
